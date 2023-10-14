@@ -44,6 +44,12 @@ const Reservation = () => {
     setCurrentIndex(index);
   };
 
+  const handleDelete = (index) => {
+    const updatedReservations = [...reservations];
+    updatedReservations.splice(index, 1);
+    setReservations(updatedReservations);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -58,6 +64,7 @@ const Reservation = () => {
           <li key={index}>
             {reservation.name}, {reservation.date}, {reservation.time}, {reservation.guests}
             <button onClick={() => handleEdit(index)}>Edit</button>
+            <button onClick={() => handleDelete(index)}>Delete</button>
           </li>
         ))}
       </ul>
